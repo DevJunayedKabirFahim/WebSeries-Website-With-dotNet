@@ -1,0 +1,9 @@
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\bin\Debug\BusinessEntityLayer.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\bin\Debug\BusinessEntityLayer.pdb
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.csproj.AssemblyReference.cache
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.csproj.CopyComplete
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.pdb

@@ -1,0 +1,16 @@
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\BusinessEntityLayer.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\BusinessEntityLayer.pdb
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\Administrator 0.1\source\repos\Web-Series-Web-API--ASP.NET\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

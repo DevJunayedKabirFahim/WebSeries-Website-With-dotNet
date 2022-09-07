@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebSeriesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Archive">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VideoId" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Video" Relationship="Self.FK_Archives_Videos" FromRole="Archives" ToRole="Videos" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Videos" Relationship="Self.FK_Videos_Categories" FromRole="Categories" ToRole="Videos" />
+  </EntityType>
+  <EntityType Name="Expans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Expanses_Users" FromRole="Expanses" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="FeaturedVideo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FromDate" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="VideoId" Type="Int32" />
+    <NavigationProperty Name="Video" Relationship="Self.FK_FeaturedVideos_Videos" FromRole="FeaturedVideos" ToRole="Videos" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tokens" Relationship="Self.FK_Sessions_Logins" FromRole="Logins" ToRole="Tokens" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Logins" FromRole="Logins" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Mywatchlist">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Mywatchlists_Users" FromRole="Mywatchlists" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Subscriptions" Relationship="Self.FK_Subscriptions_Packages" FromRole="Packages" ToRole="Subscriptions" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VideoId" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rating" Type="Double" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Reviews_Users" FromRole="Reviews" ToRole="Users" />
+    <NavigationProperty Name="Video" Relationship="Self.FK_Reviews_Videos" FromRole="Reviews" ToRole="Videos" />
+  </EntityType>
+  <EntityType Name="Salary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Salary1" Type="Double" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Salarys" FromRole="Salarys" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Subscription">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Package" Relationship="Self.FK_Subscriptions_Packages" FromRole="Subscriptions" ToRole="Packages" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Subscriptions_Users" FromRole="Subscriptions" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TokenData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Device" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Platfrom" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Browser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LoginTime" Type="DateTime" Precision="3" />
+    <Property Name="ExpiredAt" Type="DateTime" Precision="3" />
+    <Property Name="GMT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LoginId" Type="Int32" />
+    <NavigationProperty Name="Login" Relationship="Self.FK_Sessions_Logins" FromRole="Tokens" ToRole="Logins" />
+  </EntityType>
+  <EntityType Name="UserRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RequestTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="RequestCategorie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImdbLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserRequests_Users" FromRole="UserRequests" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AccountCreateTime" Type="DateTime" Precision="3" />
+    <Property Name="LoginTime" Type="DateTime" Precision="3" />
+    <Property Name="LoginId" Type="Int32" />
+    <Property Name="SalaryId" Type="Int32" />
+    <NavigationProperty Name="Expanses" Relationship="Self.FK_Expanses_Users" FromRole="Users" ToRole="Expanses" />
+    <NavigationProperty Name="Login" Relationship="Self.FK_Users_Logins" FromRole="Users" ToRole="Logins" />
+    <NavigationProperty Name="Mywatchlists" Relationship="Self.FK_Mywatchlists_Users" FromRole="Users" ToRole="Mywatchlists" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_Users" FromRole="Users" ToRole="Reviews" />
+    <NavigationProperty Name="Salary" Relationship="Self.FK_Users_Salarys" FromRole="Users" ToRole="Salarys" />
+    <NavigationProperty Name="Subscriptions" Relationship="Self.FK_Subscriptions_Users" FromRole="Users" ToRole="Subscriptions" />
+    <NavigationProperty Name="UserRequests" Relationship="Self.FK_UserRequests_Users" FromRole="Users" ToRole="UserRequests" />
+    <NavigationProperty Name="Videos" Relationship="Self.FK_Videos_Users" FromRole="Users" ToRole="Videos" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VideoTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="VideoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="UploadDate" Type="DateTime" Precision="7" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="Archives" Relationship="Self.FK_Archives_Videos" FromRole="Videos" ToRole="Archives" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Videos_Categories" FromRole="Videos" ToRole="Categories" />
+    <NavigationProperty Name="FeaturedVideos" Relationship="Self.FK_FeaturedVideos_Videos" FromRole="Videos" ToRole="FeaturedVideos" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_Videos" FromRole="Videos" ToRole="Reviews" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Videos_Users" FromRole="Videos" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_Archives_Videos">
+    <End Role="Videos" Type="Self.Video" Multiplicity="0..1" />
+    <End Role="Archives" Type="Self.Archive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Archives">
+        <PropertyRef Name="VideoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videos_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Videos" Type="Self.Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expanses_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Expanses" Type="Self.Expans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Expanses">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeaturedVideos_Videos">
+    <End Role="Videos" Type="Self.Video" Multiplicity="0..1" />
+    <End Role="FeaturedVideos" Type="Self.FeaturedVideo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeaturedVideos">
+        <PropertyRef Name="VideoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sessions_Logins">
+    <End Role="Logins" Type="Self.Login" Multiplicity="0..1" />
+    <End Role="Tokens" Type="Self.Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logins">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tokens">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Logins">
+    <End Role="Logins" Type="Self.Login" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logins">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mywatchlists_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Mywatchlists" Type="Self.Mywatchlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mywatchlists">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subscriptions_Packages">
+    <End Role="Packages" Type="Self.Package" Multiplicity="0..1" />
+    <End Role="Subscriptions" Type="Self.Subscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subscriptions">
+        <PropertyRef Name="PackageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_Videos">
+    <End Role="Videos" Type="Self.Video" Multiplicity="0..1" />
+    <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Videos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="VideoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Salarys">
+    <End Role="Salarys" Type="Self.Salary" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salarys">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="SalaryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subscriptions_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Subscriptions" Type="Self.Subscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subscriptions">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRequests_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRequests" Type="Self.UserRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRequests">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videos_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Videos" Type="Self.Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebSeriesDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Archives" EntityType="Self.Archive" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Expanses" EntityType="Self.Expans" />
+    <EntitySet Name="FeaturedVideos" EntityType="Self.FeaturedVideo" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="Mywatchlists" EntityType="Self.Mywatchlist" />
+    <EntitySet Name="Packages" EntityType="Self.Package" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="Salarys" EntityType="Self.Salary" />
+    <EntitySet Name="Subscriptions" EntityType="Self.Subscription" />
+    <EntitySet Name="Tokens" EntityType="Self.Token" />
+    <EntitySet Name="UserRequests" EntityType="Self.UserRequest" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Videos" EntityType="Self.Video" />
+    <AssociationSet Name="FK_Archives_Videos" Association="Self.FK_Archives_Videos">
+      <End Role="Videos" EntitySet="Videos" />
+      <End Role="Archives" EntitySet="Archives" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videos_Categories" Association="Self.FK_Videos_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expanses_Users" Association="Self.FK_Expanses_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Expanses" EntitySet="Expanses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeaturedVideos_Videos" Association="Self.FK_FeaturedVideos_Videos">
+      <End Role="Videos" EntitySet="Videos" />
+      <End Role="FeaturedVideos" EntitySet="FeaturedVideos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sessions_Logins" Association="Self.FK_Sessions_Logins">
+      <End Role="Logins" EntitySet="Logins" />
+      <End Role="Tokens" EntitySet="Tokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Logins" Association="Self.FK_Users_Logins">
+      <End Role="Logins" EntitySet="Logins" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mywatchlists_Users" Association="Self.FK_Mywatchlists_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Mywatchlists" EntitySet="Mywatchlists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subscriptions_Packages" Association="Self.FK_Subscriptions_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Subscriptions" EntitySet="Subscriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_Users" Association="Self.FK_Reviews_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_Videos" Association="Self.FK_Reviews_Videos">
+      <End Role="Videos" EntitySet="Videos" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Salarys" Association="Self.FK_Users_Salarys">
+      <End Role="Salarys" EntitySet="Salarys" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subscriptions_Users" Association="Self.FK_Subscriptions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Subscriptions" EntitySet="Subscriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRequests_Users" Association="Self.FK_UserRequests_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRequests" EntitySet="UserRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videos_Users" Association="Self.FK_Videos_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
